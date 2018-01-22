@@ -5,33 +5,32 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-6">
-          <!-- <div *ngIf="rohitazad">
+          <div *ngIf="ppfMaturityAmount">
               <div class="alert alert-info col-md-5 text-center">
-                <p>Loan EMI</p>
+                <p>Maturity Amount</p>
                 <button class="btn btn-success btn-lg">
-                     {{loanEMI | currency:'₹ '}}
+                     {{ppfMaturityAmount | currency:'₹ '}}
                 </button>
               </div>
               <div class="alert alert-info col-md-5 text-center">
-                <p>Total Interest Payable</p>
+                <p>Total Interest </p>
                 <button class="btn btn-warning  btn-lg">
-                     {{totalInterestPayable | currency:'₹ '}}
+                     {{earnTotalProfit | currency:'₹ '}}
                 </button>
               </div>
               <div class="alert alert-info col-md-5 text-center">
-                <p>Total Payment <br />(Principal + Interest)</p>
+                <p>Total Deposit </p>
                 <button class="btn btn-info  btn-lg">
-                     {{totalPaymentPrincipalInterest | currency:'₹ '}}
+                     {{ppfTotalDeposit | currency:'₹ '}}
                 </button>
               </div>
-              <div class="alert alert-info col-md-5 text-center">
+              <!-- <div class="alert alert-info col-md-5 text-center">
                 <p>Interest Percentage</p>
                 <button class="btn btn-info  btn-lg">
                      {{interestPercentage}}
                 </button>
-              </div>
-          </div> -->
-          https://www.way2wealth.com/tools/public-provident-fund/
+              </div> -->
+          </div> 
         </div>
         <div class="col-md-6">
           <form class="" novalidate (ngSubmit)="ppfInterestRateCalc()" [formGroup]="ppfInterestRate">
@@ -44,7 +43,9 @@
                 <span class="input-group-addon">₹</span>
                 <input type="number" class="form-control" formControlName="depostiAmount" id="depostiAmountId" placeholder="Deposit Amount (required)"
                 />
+                <span class="input-group-addon">Yearly</span>
               </div>
+              
                 <span class="help-block" *ngIf="(ppfInterestRate.get('depostiAmount').touched || 
                     ppfInterestRate.get('depostiAmount').dirty) && 
                     ppfInterestRate.get('depostiAmount').errors">
@@ -53,7 +54,17 @@
                 </span>
               </div>
   
-  
+              <div class="form-group">
+                <label class="control-label" for="interestRateId">Interest rate</label>
+                <div class="input-group">
+                <span class="input-group-addon">Yearly</span>
+                <input type="number" [readonly]="true" class="form-control" formControlName="interestRate" id="interestRateId" placeholder="Deposit Amount (required)"
+                />
+                <span class="input-group-addon">%</span>
+              </div>
+              <small>The current interest rate (effective from 01.07.2017) is 7.8 %</small>
+                
+              </div>
               
   
               <div class="form-group" [ngClass]="{'has-error': (ppfInterestRate.get('financialYear').touched || 
@@ -107,31 +118,29 @@
         </div>
   
       </div>
-      <!-- <div class="row" *ngIf="totalEmiPrice.length">
+      <div class="row" *ngIf="ppfAmountArray.length">
         <div class="col-md-12">
             <table class="table table-striped table-bordered">
               <thead>
                 <tr class="success">
-                  <th>Payment No.</th>
-                  <th>Begining Balance</th>
-                  <th>EMI</th>
-                  <th>Principal</th>
-                  <th>Interest</th>
-                  <th>Ending Balance</th>
+                  <th>Year</th>
+                  <th>Opening Balance</th>
+                  <th>Amount Deposited</th>
+                  <th>Interest Earned</th>
+                  <th>Closing Balance</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of totalEmiPrice">
-                  <td>{{item.PaymentNo}}</td>
-                  <td>{{item.BeginingBalance | currency:'₹ '}}</td>
-                  <td>{{item.EMI | currency:'₹ '}}</td>
-                  <td>{{item.Principal | currency:'₹ '}}</td>
-                  <td>{{item.Interest | currency:'₹ '}}</td>
-                  <td>{{item.EndingBalance | currency:'₹ '}}</td>
+                <tr *ngFor="let item of ppfAmountArray">
+                  <td>{{item.Year}}</td>
+                  <td>{{item.openingBalance | currency:'₹ '}}</td>
+                  <td>{{item.amountDeposited | currency:'₹ '}}</td>
+                  <td>{{item.interestEarned | currency:'₹ '}}</td>
+                  <td>{{item.closingBalance | currency:'₹ '}}</td>
                 </tr>
               </tbody>
             </table>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>

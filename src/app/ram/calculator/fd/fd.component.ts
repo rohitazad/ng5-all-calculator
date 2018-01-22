@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-// here copy to this function http://javascript-tutor.net/index.php/future-value-calculator/
 
 @Component({
   selector: 'app-fd',

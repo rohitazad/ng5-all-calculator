@@ -1,0 +1,8 @@
+.alert{
+    margin-left: 20px;
+    min-height: 145px;
+}
+.alert>p {
+    margin: 10px;
+    font-weight: bold;
+}

@@ -8,18 +8,28 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PpfComponent implements OnInit {
   ppfInterestRate: FormGroup;
+  ppfMaturityAmount:number;
+  ppfTotalDeposit:number;
+  earnTotalProfit:number;
+  ppfAmountArray:any[] = [];
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.ppfInterestRate = this.fb.group({
       depostiAmount: ['', [Validators.required, Validators.min(500), Validators.max(150000)]],
-      financialYear: ['', [Validators.required]]
+      financialYear: ['2017-18', [Validators.required]],
+      interestRate: ['7.8']
 
     })
   }
 
   ppfInterestRateCalc(){
+    this.ppfMaturityAmount = 0;
+    this.ppfTotalDeposit = 0;
+    this.earnTotalProfit = 0;
+    this.ppfAmountArray = [];
+
     console.log('click to button sumbit');
     let depositAmount = this.ppfInterestRate.value.depostiAmount;
     let depositAmountWithInterset =  depositAmount;
@@ -27,12 +37,9 @@ export class PpfComponent implements OnInit {
     console.log(depositAmountWithInterset + '__' + fY);
 
     
-    // var ppfFn = this.ppfCalculateFn(dFA, 1);
-    // console.log(ppfFn);
-    // https://ppf-calculator.in/result
 
     let depostiAmount;
-    let objArray:any[] = [];
+    
     let i;
     for(i=0; i<15; i++){
 
@@ -41,8 +48,8 @@ export class PpfComponent implements OnInit {
       let  finalAmount = totalIn + depositAmountWithInterset ;
       let actualAmount = 	finalAmount - totalIn;
       depositAmountWithInterset = finalAmount + depositAmount;
-      objArray.push({
-        'Year':i,
+      this.ppfAmountArray.push({
+        'Year':i+1,
         'monthlyInterestRatio':monthlyInterestRatio,
         'interestEarned':totalIn,
         'closingBalance':finalAmount,
@@ -51,22 +58,14 @@ export class PpfComponent implements OnInit {
         'openingBalance' : actualAmount - depositAmount
 
       })
+      this.ppfMaturityAmount = finalAmount;
+      this.ppfTotalDeposit = depositAmount*15;
+      this.earnTotalProfit = this.ppfMaturityAmount-this.ppfTotalDeposit;
     }
-    console.log(objArray);
+    console.log(this.ppfAmountArray);
 
   }
-  ppfCalculateFn(amount,intersetRate){
-    let monthlyInterestRatio  = (intersetRate/100)/12;
-    let totalIn = amount * monthlyInterestRatio * 12;
-    let  finalAmount = totalIn + amount ;
-    let actualAmount = 	finalAmount - totalIn;
-    return {
-      'totalIn': totalIn,
-      'actualAmount': actualAmount,
-      'finalAmount':finalAmount
-    }
-  }
-
+  
   
   
   
