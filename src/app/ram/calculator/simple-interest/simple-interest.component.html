@@ -1,0 +1,93 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Simple Interest Calculator
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div *ngIf="totalInterest">
+            <div class="alert alert-info col-md-5 text-center">
+              <p>Total Interest </p>
+              <button class="btn btn-success btn-lg">
+                   {{totalInterest | currency:'₹ '}}
+              </button>
+            </div>
+            <div class="alert alert-info col-md-5 text-center">
+              <p>Final Amount </p>
+              <button class="btn btn-warning  btn-lg">
+                   {{finalAmount | currency:'₹ '}}
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <form class="" novalidate (ngSubmit)="simpleInterestDeposit()" [formGroup]="simpleInterestForm">
+          <fieldset>
+            <div class="form-group" [ngClass]="{'has-error': (simpleInterestForm.get('depositAmount').touched || 
+            simpleInterestForm.get('depositAmount').dirty) &&
+            !simpleInterestForm.get('depositAmount').valid }">
+              <label class="control-label" for="depositAmountId">Principal (Deposit) Amount</label>
+              <div class="input-group">
+              <span class="input-group-addon">₹</span>
+              <input type="number" class="form-control" formControlName="depositAmount" id="depositAmountId" placeholder="Deposit Amount (required)"
+              />
+            </div>
+              <span class="help-block" *ngIf="(simpleInterestForm.get('depositAmount').touched || 
+                  simpleInterestForm.get('depositAmount').dirty) && 
+                  simpleInterestForm.get('depositAmount').errors">
+                <span *ngIf="simpleInterestForm.get('depositAmount').errors.required">Please enter your Principal (Deposit) Amount.</span>
+              </span>
+            </div>
+
+
+            <div class="form-group" [ngClass]="{'has-error': (simpleInterestForm.get('interestRate').touched || 
+            simpleInterestForm.get('interestRate').dirty) &&
+            !simpleInterestForm.get('interestRate').valid }">
+              <label class="control-label" for="interestRateId">Interest Rate</label>
+              <div class="input-group">
+                 <span class="input-group-addon">%</span>
+              <input type="number" class="form-control" formControlName="interestRate" id="interestRateId" placeholder="Interest Rate (required)"
+              />
+            </div>
+              <span class="help-block" *ngIf="(simpleInterestForm.get('interestRate').touched || 
+                  simpleInterestForm.get('interestRate').dirty) && 
+                  simpleInterestForm.get('interestRate').errors">
+                <span *ngIf="simpleInterestForm.get('interestRate').errors.required">Please enter  interest rate.</span>
+                <span *ngIf="simpleInterestForm.get('interestRate').errors.max">Please enter  interest rate below 40.</span>
+              </span>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error': (simpleInterestForm.get('loanTerm').touched || 
+            simpleInterestForm.get('loanTerm').dirty) &&
+            !simpleInterestForm.get('loanTerm').valid }">
+              <label class="control-label" for="loanTermId">Term Deposit</label>
+              <div class="input-group">
+              <input type="number" class="form-control" formControlName="loanTerm" id="loanTermId" placeholder="Loan Term (required)"
+              /><span class="input-group-addon">Years</span>
+            </div>
+              <span class="help-block" *ngIf="(simpleInterestForm.get('loanTerm').touched || 
+                  simpleInterestForm.get('loanTerm').dirty) && 
+                  simpleInterestForm.get('loanTerm').errors">
+                <span *ngIf="simpleInterestForm.get('loanTerm').errors.required">Please enter  Term Deposit.</span>
+                <span *ngIf="simpleInterestForm.get('loanTerm').errors.max">Please enter  Loan Term Deposit below 40 .</span>
+              </span>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+              <button class="btn btn-primary" type="submit" [disabled]="!simpleInterestForm.valid">
+                Calculate loan amount
+              </button>
+
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

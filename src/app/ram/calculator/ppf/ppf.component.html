@@ -1,0 +1,137 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        PPF (Public Provident Fund) Calculator with display PPF Interest Rate |  PPF Calculator - Yearwise Interest/Return
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- <div *ngIf="rohitazad">
+              <div class="alert alert-info col-md-5 text-center">
+                <p>Loan EMI</p>
+                <button class="btn btn-success btn-lg">
+                     {{loanEMI | currency:'₹ '}}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-5 text-center">
+                <p>Total Interest Payable</p>
+                <button class="btn btn-warning  btn-lg">
+                     {{totalInterestPayable | currency:'₹ '}}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-5 text-center">
+                <p>Total Payment <br />(Principal + Interest)</p>
+                <button class="btn btn-info  btn-lg">
+                     {{totalPaymentPrincipalInterest | currency:'₹ '}}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-5 text-center">
+                <p>Interest Percentage</p>
+                <button class="btn btn-info  btn-lg">
+                     {{interestPercentage}}
+                </button>
+              </div>
+          </div> -->
+          https://www.way2wealth.com/tools/public-provident-fund/
+        </div>
+        <div class="col-md-6">
+          <form class="" novalidate (ngSubmit)="ppfInterestRateCalc()" [formGroup]="ppfInterestRate">
+            <fieldset>
+              <div class="form-group" [ngClass]="{'has-error': (ppfInterestRate.get('depostiAmount').touched || 
+              ppfInterestRate.get('depostiAmount').dirty) &&
+              !ppfInterestRate.get('depostiAmount').valid }">
+                <label class="control-label" for="depostiAmountId">Deposit Amount</label>
+                <div class="input-group">
+                <span class="input-group-addon">₹</span>
+                <input type="number" class="form-control" formControlName="depostiAmount" id="depostiAmountId" placeholder="Deposit Amount (required)"
+                />
+              </div>
+                <span class="help-block" *ngIf="(ppfInterestRate.get('depostiAmount').touched || 
+                    ppfInterestRate.get('depostiAmount').dirty) && 
+                    ppfInterestRate.get('depostiAmount').errors">
+                  <span *ngIf="ppfInterestRate.get('depostiAmount').errors.required">Please enter your Deposit amount.</span>
+                  <span *ngIf="ppfInterestRate.get('depostiAmount').errors.min || ppfInterestRate.get('depostiAmount').errors.max">Please enter your Deposit min 500 and max 150000.</span>
+                </span>
+              </div>
+  
+  
+              
+  
+              <div class="form-group" [ngClass]="{'has-error': (ppfInterestRate.get('financialYear').touched || 
+              ppfInterestRate.get('financialYear').dirty) &&
+              !ppfInterestRate.get('financialYear').valid }">
+                <label class="control-label" for="financialYearId">Select  Financial Year</label>
+                <select name="year" 
+                  class="form-control"
+                  id="financialYearId"
+                  formControlName="financialYear">
+                    <option value="2017-18" selected="2017-18">2017-18</option>
+                    <option value="2016-17">2016-17</option>
+                    <option value="2015-16">2015-16</option>
+                    <option value="2014-15">2014-15</option>
+                    <option value="2013-14">2013-14</option>
+                    <option value="2012-13">2012-13</option>
+                    <option value="2011-12">2011-12</option>
+                    <option value="2010-11">2010-11</option>
+                    <option value="2009-10">2009-10</option>
+                    <option value="2008-09">2008-09</option>
+                    <option value="2007-08">2007-08</option>
+                    <option value="2006-07">2006-07</option>
+                    <option value="2005-06">2005-06</option>
+                    <option value="2004-05">2004-05</option>
+                    <option value="2003-04">2003-04</option>
+                    <option value="2002-03">2002-03</option>
+                    <option value="2001-02">2001-02</option>
+                    <option value="2000-01">2000-01</option>
+                    <option value="1999-2000">1999-2000</option>
+                </select>
+                <span class="help-block" *ngIf="(ppfInterestRate.get('financialYear').touched || 
+                    ppfInterestRate.get('financialYear').dirty) && 
+                    ppfInterestRate.get('financialYear').errors">
+                  <span *ngIf="ppfInterestRate.get('financialYear').errors.required">Please Select  Financial Year.</span>
+                </span>
+              </div>
+  
+  
+  
+  
+              <div class="form-group">
+  
+                <button class="btn btn-primary" type="submit" [disabled]="!ppfInterestRate.valid">
+                  Calculate PPF amount
+                </button>
+  
+              </div>
+  
+            </fieldset>
+          </form>
+        </div>
+  
+      </div>
+      <!-- <div class="row" *ngIf="totalEmiPrice.length">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr class="success">
+                  <th>Payment No.</th>
+                  <th>Begining Balance</th>
+                  <th>EMI</th>
+                  <th>Principal</th>
+                  <th>Interest</th>
+                  <th>Ending Balance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of totalEmiPrice">
+                  <td>{{item.PaymentNo}}</td>
+                  <td>{{item.BeginingBalance | currency:'₹ '}}</td>
+                  <td>{{item.EMI | currency:'₹ '}}</td>
+                  <td>{{item.Principal | currency:'₹ '}}</td>
+                  <td>{{item.Interest | currency:'₹ '}}</td>
+                  <td>{{item.EndingBalance | currency:'₹ '}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div> -->
+    </div>
+  </div>

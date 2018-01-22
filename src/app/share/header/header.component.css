@@ -1,0 +1,148 @@
+.custom-navigation.navbar-default {
+    background-color: #3097D1;
+    border-radius: 0;
+    border-bottom: 3px solid #2579a9;
+    margin-bottom: 20px;
+}
+
+.custom-navigation.navbar-default .navbar-nav>li>a,
+.custom-navigation.navbar-default .navbar-brand{
+    color: #fff;
+}
+.custom-navigation.navbar-default .navbar-nav>.active>a, 
+.custom-navigation.navbar-default .navbar-nav>.active>a:focus, 
+.custom-navigation.navbar-default .navbar-nav>.active>a:hover{
+    color: #fff;
+    background-color: #2881b3;
+}
+.custom-navigation.navbar-default .navbar-nav>li>a:focus, 
+.custom-navigation.navbar-default .navbar-nav>li>a:hover {
+    color: #fff;
+    background-color: transparent;
+}
+
+
+.custom-navigation.navbar-default .navbar-nav>.open>a, 
+.custom-navigation.navbar-default .navbar-nav>.open>a:focus, 
+.custom-navigation.navbar-default .navbar-nav>.open>a:hover{
+    background-color: #2881b3;
+}
+
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+    background: transparent;
+}
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #fff;
+}
+.custom-navigation.navbar-default .dropdown-menu>li>a:focus, 
+.custom-navigation.navbar-default .dropdown-menu>li>a:hover{
+    color: #fff;
+    background-color: #2881b3;
+}
+
+
+@media screen 
+  and (min-width: 200px) 
+  and (max-width: 750px)  { 
+
+   
+    /* Here navigation animation start for only mobile  */
+.navbar-toggle {
+	border: none;
+	background: transparent !important;
+}
+
+.navbar-toggle:hover {
+	background: transparent !important;
+}
+
+.navbar-toggle .icon-bar {
+	width: 22px;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.navbar-toggle.x .icon-bar:nth-of-type(1) {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 10% 10%;
+	-ms-transform-origin: 10% 10%;
+	transform-origin: 10% 10%;
+}
+
+.navbar-toggle.x .icon-bar:nth-of-type(2) {
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.navbar-toggle.x .icon-bar:nth-of-type(3) {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 10% 90%;
+	-ms-transform-origin: 10% 90%;
+	transform-origin: 10% 90%;
+}
+
+/* ANIMATED X COLLAPSED */
+.navbar-toggle.x.collapsed .icon-bar:nth-of-type(1) {
+	-webkit-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+}
+
+.navbar-toggle.x.collapsed .icon-bar:nth-of-type(2) {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.navbar-toggle.x.collapsed .icon-bar:nth-of-type(3) {
+	-webkit-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+}
+
+
+
+.navbar-collapse.collapse.out.collapse{
+    border-top: 0;
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.navbar-collapse.collapse.in2.out{
+    border-top: 3px solid #2579a9;
+     -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+    -o-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+
+/* Here navigation animation end for only mobile   */
+
+    
+}
+
+

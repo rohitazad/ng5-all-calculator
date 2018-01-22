@@ -1,0 +1,133 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Home Loan EMI Calculator
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+          http://ngiriraj.com/pages/finance/emi.php
+          https://www.npmjs.com/package/angular2-google-chart
+        <div *ngIf="loanEMI">
+            <div class="alert alert-info col-md-5 text-center">
+              <p>Loan EMI</p>
+              <button class="btn btn-success btn-lg">
+                   {{loanEMI | currency:'₹ '}}
+              </button>
+            </div>
+            <div class="alert alert-info col-md-5 text-center">
+              <p>Total Interest Payable</p>
+              <button class="btn btn-warning  btn-lg">
+                   {{totalInterestPayable | currency:'₹ '}}
+              </button>
+            </div>
+            <div class="alert alert-info col-md-5 text-center">
+              <p>Total Payment <br />(Principal + Interest)</p>
+              <button class="btn btn-info  btn-lg">
+                   {{totalPaymentPrincipalInterest | currency:'₹ '}}
+              </button>
+            </div>
+            <div class="alert alert-info col-md-5 text-center">
+              <p>Interest Percentage</p>
+              <button class="btn btn-info  btn-lg">
+                   {{interestPercentage}}
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <form class="" novalidate (ngSubmit)="calulateHomeLoanEMI()" [formGroup]="homeLoanEMIForm">
+          <fieldset>
+            <div class="form-group" [ngClass]="{'has-error': (homeLoanEMIForm.get('loanAmount').touched || 
+            homeLoanEMIForm.get('loanAmount').dirty) &&
+            !homeLoanEMIForm.get('loanAmount').valid }">
+              <label class="control-label" for="loanAmountId">Loan Amount</label>
+              <div class="input-group">
+              <span class="input-group-addon">₹</span>
+              <input type="number" class="form-control" formControlName="loanAmount" id="loanAmountId" placeholder="Loan Amount (required)"
+              />
+            </div>
+              <span class="help-block" *ngIf="(homeLoanEMIForm.get('loanAmount').touched || 
+                  homeLoanEMIForm.get('loanAmount').dirty) && 
+                  homeLoanEMIForm.get('loanAmount').errors">
+                <span *ngIf="homeLoanEMIForm.get('loanAmount').errors.required">Please enter your loan amount.</span>
+              </span>
+            </div>
+
+
+            <div class="form-group" [ngClass]="{'has-error': (homeLoanEMIForm.get('interestRate').touched || 
+            homeLoanEMIForm.get('interestRate').dirty) &&
+            !homeLoanEMIForm.get('interestRate').valid }">
+              <label class="control-label" for="interestRateId">Interest Rate</label>
+              <div class="input-group">
+                 <span class="input-group-addon">%</span>
+              <input type="number" class="form-control" formControlName="interestRate" id="interestRateId" placeholder="Interest Rate (required)"
+              />
+            </div>
+              <span class="help-block" *ngIf="(homeLoanEMIForm.get('interestRate').touched || 
+                  homeLoanEMIForm.get('interestRate').dirty) && 
+                  homeLoanEMIForm.get('interestRate').errors">
+                <span *ngIf="homeLoanEMIForm.get('interestRate').errors.required">Please enter  interest rate.</span>
+                <span *ngIf="homeLoanEMIForm.get('interestRate').errors.max">Please enter  interest rate below 40.</span>
+              </span>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error': (homeLoanEMIForm.get('loanTerm').touched || 
+            homeLoanEMIForm.get('loanTerm').dirty) &&
+            !homeLoanEMIForm.get('loanTerm').valid }">
+              <label class="control-label" for="loanTermId">Loan Term</label>
+              <div class="input-group">
+              <input type="number" class="form-control" formControlName="loanTerm" id="loanTermId" placeholder="Loan Term (required)"
+              /><span class="input-group-addon">Years</span>
+            </div>
+              <span class="help-block" *ngIf="(homeLoanEMIForm.get('loanTerm').touched || 
+                  homeLoanEMIForm.get('loanTerm').dirty) && 
+                  homeLoanEMIForm.get('loanTerm').errors">
+                <span *ngIf="homeLoanEMIForm.get('loanTerm').errors.required">Please enter  Loan Term.</span>
+                <span *ngIf="homeLoanEMIForm.get('loanTerm').errors.max">Please enter  Loan Term below 40 .</span>
+              </span>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+              <button class="btn btn-primary" type="submit" [disabled]="!homeLoanEMIForm.valid">
+                Calculate loan amount
+              </button>
+
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+    <div class="row" *ngIf="totalEmiPrice.length">
+      <div class="col-md-12">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr class="success">
+                <th>Payment No.</th>
+                <th>Begining Balance</th>
+                <th>EMI</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Ending Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of totalEmiPrice">
+                <td>{{item.PaymentNo}}</td>
+                <td>{{item.BeginingBalance | currency:'₹ '}}</td>
+                <td>{{item.EMI | currency:'₹ '}}</td>
+                <td>{{item.Principal | currency:'₹ '}}</td>
+                <td>{{item.Interest | currency:'₹ '}}</td>
+                <td>{{item.EndingBalance | currency:'₹ '}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

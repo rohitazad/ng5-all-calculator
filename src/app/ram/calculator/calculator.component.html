@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!-- <p>
+  home works!
+</p>
+
+https://emicalculator.net <br />
+https://www.icicibank.com/calculator/index.page <br />
+http://www.moneycontrol.com/personal-finance/tools/emi-calculator.html <br />
+http://www.stijnwinand.com/calc/ <br />
+https://valor-software.com/ngx-bootstrap/ <br />
+https://toddmotto.com/
+
+
+http://a2zp30.com/26149-the-complete-angular-course-beginner-to-advanced-75329.html
+
+www.p30download.com
+
+
+Loader here copy 
+https://hassantariqblog.wordpress.com/2017/03/22/angular2-using-custom-loader-spinner-as-service-in-angular-2-application/ -->
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Basic Calculator
+  </div>
+  <div class="panel-body">
+    <div class="row bg-clc">
+      <div class="col-md-6">
+        
+        <p>This is only just basic calculator not expert.</p>
+        <h2>More basic calcuators</h2>
+          <div class="list-group">
+            <a [routerLink]="['/calculator/simple-interest']" class="list-group-item">Simple Interest Calculator</a>
+            <a [routerLink]="['/calculator/home-loan-emi']" class="list-group-item">Home Loan EMI</a>
+            <a [routerLink]="['/calculator/car-loan-emi']" class="list-group-item">Car Loan EMI</a>
+            <a [routerLink]="['/calculator/personal-loan']" class="list-group-item">Personal Loan EMI</a>
+            <a [routerLink]="['/calculator/fixed-deposit']" class="list-group-item">FD Calculator</a>
+            <a [routerLink]="['/calculator/public-provident-fund']" class="list-group-item">PPF Calculator</a>
+            
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="basic-clc">
+          <div class="bclc-bg">
+            <div class="result">{{expressionResult}}</div>
+            <div class="result-box">
+              <div class="wrap">
+                <form class="form-result" name="form-calculator">
+                  <input type="text" 
+                          class=""
+                          data-name="formclc"
+                          id="formclc"
+                          maxlength="256"
+                          name="formclc"
+                          placeholder="0"
+                          type="text"
+                          pattern="[0-9-+*/.()]"
+                          [(ngModel)]="formclcValue"
+                          [style.background-color]="formclcBg"
+                          readonly />
+                </form>
+              </div>
+            </div>
+            <div class="bclc-btn">
+              <button class="clc-btn" (click)="clcBtnPress('(')">(</button>
+              <button class="clc-btn" (click)="clcBtnPress(')')">)</button>
+              <button class="clc-btn clc-ac-btn" (click)="clcBtnClear('')">
+                {{clVal}}
+              </button>
+    
+              <button class="clc-btn" (click)="clcBtnPress('7')">7</button>
+              <button class="clc-btn" (click)="clcBtnPress('8')">8</button>
+              <button class="clc-btn" (click)="clcBtnPress('9')">9</button>
+              <button class="clc-btn" (click)="clcBtnPress('/')">÷</button>
+              <button class="clc-btn" (click)="clcBtnPress('4')">4</button>
+              <button class="clc-btn" (click)="clcBtnPress('5')">5</button>
+              <button class="clc-btn" (click)="clcBtnPress('6')">6</button>
+              <button class="clc-btn" (click)="clcBtnPress('*')">x</button>
+              <button class="clc-btn" (click)="clcBtnPress('1')">1</button>
+              <button class="clc-btn" (click)="clcBtnPress('2')">2</button>
+              <button class="clc-btn" (click)="clcBtnPress('3')">3</button>
+              <button class="clc-btn" (click)="clcBtnPress('-')">-</button>
+              <button class="clc-btn" (click)="clcBtnPress('0')">0</button>
+              <button class="clc-btn" (click)="clcBtnPress('.')">.</button>
+              <button class="clc-btn" (click)="clcBtnCalculate()">=</button>
+              <button class="clc-btn" (click)="clcBtnPress('+')">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
