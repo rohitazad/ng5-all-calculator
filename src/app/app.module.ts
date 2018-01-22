@@ -21,6 +21,7 @@ import { PersonalLoanComponent } from './ram/calculator/personal-loan/personal-l
 import { FdComponent } from './ram/calculator/fd/fd.component';
 import { PpfComponent } from './ram/calculator/ppf/ppf.component';
 import { SimpleInterestComponent } from './ram/calculator/simple-interest/simple-interest.component';
+import { RecurringDepositComponent } from './ram/calculator/recurring-deposit/recurring-deposit.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SimpleInterestComponent } from './ram/calculator/simple-interest/simple
     PersonalLoanComponent,
     FdComponent,
     PpfComponent,
-    SimpleInterestComponent
+    SimpleInterestComponent,
+    RecurringDepositComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { SimpleInterestComponent } from './ram/calculator/simple-interest/simple
       {path:'calculator/fixed-deposit', component:FdComponent},
       {path:'calculator/public-provident-fund', component:PpfComponent},
       {path:'calculator/simple-interest', component:SimpleInterestComponent},
+      {path:'calculator/recurring-deposit', component:RecurringDepositComponent},
       {path:'contact-us', component:ContactComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponentComponent, pathMatch: 'full' },
