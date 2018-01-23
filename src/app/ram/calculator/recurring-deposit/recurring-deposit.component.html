@@ -1,38 +1,30 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     Recurring Deposit Calculator
-
-    https://www.hdfcbank.com/RD_Calculator/index.aspx
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-md-6">
-        <!-- <div *ngIf="loanEMI">
+         <div *ngIf="maturityAmount">
             <div class="alert alert-info col-md-5 text-center">
-              <p>Loan EMI</p>
+              <p>Maturity Amount</p>
               <button class="btn btn-success btn-lg">
-                   {{loanEMI | currency:'₹ '}}
+                   {{maturityAmount | currency:'₹ '}}
               </button>
             </div>
             <div class="alert alert-info col-md-5 text-center">
-              <p>Total Interest Payable</p>
+              <p>Total Interest </p>
               <button class="btn btn-warning  btn-lg">
-                   {{totalInterestPayable | currency:'₹ '}}
+                   {{totalInterst | currency:'₹ '}}
               </button>
             </div>
             <div class="alert alert-info col-md-5 text-center">
-              <p>Total Payment <br />(Principal + Interest)</p>
+              <p>Principal Amount</p>
               <button class="btn btn-info  btn-lg">
-                   {{totalPaymentPrincipalInterest | currency:'₹ '}}
+                   {{totalPaymentPrincipal | currency:'₹ '}}
               </button>
             </div>
-            <div class="alert alert-info col-md-5 text-center">
-              <p>Interest Percentage</p>
-              <button class="btn btn-info  btn-lg">
-                   {{interestPercentage}}
-              </button>
-            </div>
-        </div> -->
+        </div> 
       </div>
       <div class="col-md-6">
         <form class="" novalidate (ngSubmit)="recurringDepositSbmit()" [formGroup]="recurringDepositForm">
@@ -50,6 +42,7 @@
                   recurringDepositForm.get('initialAmount').dirty) && 
                   recurringDepositForm.get('initialAmount').errors">
                 <span *ngIf="recurringDepositForm.get('initialAmount').errors.required">Please enter your initial amount.</span>
+                <span *ngIf="recurringDepositForm.get('initialAmount').errors.min">Please enter minimum 500 Rs.</span>
               </span>
             </div>
 
@@ -118,31 +111,28 @@
       </div>
 
     </div>
-    <!-- <div class="row" *ngIf="totalEmiPrice.length">
+    <div class="row" *ngIf="tableData.length">
       <div class="col-md-12">
           <table class="table table-striped table-bordered">
             <thead>
               <tr class="success">
-                <th>Payment No.</th>
-                <th>Begining Balance</th>
-                <th>EMI</th>
-                <th>Principal</th>
-                <th>Interest</th>
-                <th>Ending Balance</th>
+                <th>Months </th>
+                <th>Principle Amount</th>
+                <th>Total Interest Amount</th>
+                <th>Maturity Amount</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of totalEmiPrice">
-                <td>{{item.PaymentNo}}</td>
-                <td>{{item.BeginingBalance | currency:'₹ '}}</td>
-                <td>{{item.EMI | currency:'₹ '}}</td>
-                <td>{{item.Principal | currency:'₹ '}}</td>
-                <td>{{item.Interest | currency:'₹ '}}</td>
-                <td>{{item.EndingBalance | currency:'₹ '}}</td>
+              <tr *ngFor="let item of tableData">
+                <td>{{item.myStartMonth}}</td>
+                <td>{{item.principleAmount | currency:'₹ '}}</td>
+                <td>{{item.totalInt | currency:'₹ '}}</td>
+                <td>{{item.matAmount | currency:'₹ '}}</td>
               </tr>
             </tbody>
           </table>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>
+
