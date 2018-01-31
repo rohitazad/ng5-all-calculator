@@ -1,0 +1,50 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      Car Loan EMI Calculator
+    </div>
+    <div class="panel-body">
+      <div class="row">
+
+          
+        <div class="col-md-6">
+          <form class="" novalidate (ngSubmit)="calulateIncomeTax()" [formGroup]="incomeTaxForm">
+            <fieldset>
+              <div class="form-group" [ngClass]="{'has-error': (incomeTaxForm.get('loanAmount').touched || 
+              incomeTaxForm.get('loanAmount').dirty) &&
+              !incomeTaxForm.get('loanAmount').valid }">
+                <label class="control-label" for="loanAmountId">Loan Amount</label>
+                <div class="input-group">
+                <span class="input-group-addon">₹</span>
+                <input type="number" class="form-control" formControlName="loanAmount" id="loanAmountId" placeholder="Loan Amount (required)"
+                />
+              </div>
+                <span class="help-block" *ngIf="(incomeTaxForm.get('loanAmount').touched || 
+                    incomeTaxForm.get('loanAmount').dirty) && 
+                    incomeTaxForm.get('loanAmount').errors">
+                  <span *ngIf="incomeTaxForm.get('loanAmount').errors.required">Please enter your loan amount.</span>
+                </span>
+              </div>
+  
+  
+              
+  
+             
+  
+  
+  
+  
+              <div class="form-group">
+  
+                <button class="btn btn-primary" type="submit" [disabled]="!incomeTaxForm.valid">
+                  Calculate
+                </button>
+  
+              </div>
+  
+            </fieldset>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>

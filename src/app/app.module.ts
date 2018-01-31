@@ -23,7 +23,8 @@ import { PpfComponent } from './ram/calculator/ppf/ppf.component';
 import { SimpleInterestComponent } from './ram/calculator/simple-interest/simple-interest.component';
 import { RecurringDepositComponent } from './ram/calculator/recurring-deposit/recurring-deposit.component';
 
-
+import { ChartsModule } from 'ng2-charts';
+import { IncomeTaxComponent } from './ram/calculator/income-tax/income-tax.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { RecurringDepositComponent } from './ram/calculator/recurring-deposit/re
     FdComponent,
     PpfComponent,
     SimpleInterestComponent,
-    RecurringDepositComponent
+    RecurringDepositComponent,
+    IncomeTaxComponent
   ],
   imports: [
     BrowserModule,
@@ -57,10 +59,12 @@ import { RecurringDepositComponent } from './ram/calculator/recurring-deposit/re
       {path:'calculator/public-provident-fund', component:PpfComponent},
       {path:'calculator/simple-interest', component:SimpleInterestComponent},
       {path:'calculator/recurring-deposit', component:RecurringDepositComponent},
+      {path:'calculator/calculate-income-tax-on-salary', component:IncomeTaxComponent},
       {path:'contact-us', component:ContactComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponentComponent, pathMatch: 'full' },
-    ])
+    ]),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
