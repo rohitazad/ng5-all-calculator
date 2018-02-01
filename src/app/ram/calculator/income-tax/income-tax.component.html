@@ -1,13 +1,163 @@
+<!-- here to used accordian https://github.com/pleerock/ngx-accordion -->
+
 <div class="panel panel-primary">
     <div class="panel-heading">
-      Car Loan EMI Calculator
+      Income Tax Calculator
     </div>
     <div class="panel-body">
-      <div class="row">
+      <div class="row tax-accordion">
+        <form class="" novalidate (ngSubmit)="calulateIncomeTax()" [formGroup]="incomeTaxForm">
+          <fieldset>
+            <div class="col-md-12">
+                
+              <!-- Here components start here -->
+                <div class="panel-group">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">Your Details </div>
+                      <div class="panel-collapse">
+                        <div class="panel-body">
+                          <div class="row">
+                              <div class="col-md-6 col-sm-6 form-group">
+                                  <label>Assessment Year</label>
+                                  <p class="radio-section metro">
+                                      <label><input type="radio" formControlName="assessmentYear"   value="2018-2019"><span>2018-2019</span></label>
+                                      <label><input type="radio" formControlName="assessmentYear"  value="2017-2018"><span>2017-2018</span></label>
+                                      <label><input type="radio" formControlName="assessmentYear"  value="2016-2017"><span>2016-2017</span></label>
+                                  </p>
+                              </div>
+                              <div class="col-md-6 col-sm-6 form-group">
+                                  <label for="selectGendeer" class="control-label">Male/Female/Senior Citizen</label>
+                                  <select id="selectGendeer" class="form-control" type="number" formControlName="taxPayerPerson">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Senior Citizen">Senior Citizen</option>
+                                    <option value="Super Senior Citizen">Super Senior Citizen</option>
+                                  </select>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
 
+
+                    <div class="panel-heading">Income </div>
+                    <div class="panel-collapse">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 form-group" [ngClass]="{'has-error': (incomeTaxForm.get('grossSalary').touched || 
+                          incomeTaxForm.get('grossSalary').dirty) &&
+                          !incomeTaxForm.get('grossSalary').valid }">
+                              <label for="gross_salary" class="control-label">Gross salary</label>
+                              <input id="gross_salary" class="form-control" type="number" formControlName="grossSalary" >
+                              <span class="help-block" *ngIf="(incomeTaxForm.get('grossSalary').touched || 
+                                  incomeTaxForm.get('grossSalary').dirty) && 
+                                  incomeTaxForm.get('grossSalary').errors">
+                                <span *ngIf="incomeTaxForm.get('grossSalary').errors.required">Please enter your Gross Salary.</span>
+                              </span>
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="income_from_other_sources">Income from other sources</label>
+                              <input type="number" id="income_from_other_sources" class="form-control" formControlName="incomeFromOtherSources">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="income_from_interest">Income from Interest</label>
+                              <input type="number" id="income_from_interest" class="form-control" formControlName="incomeFromInterest">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="income_from_let_out_house_property">Income from let-out house property(Rental Income)</label>
+                              <input type="number" id="income_from_let_out_house_property" class="form-control" formControlName="incomeFromLetOutHouseProperty">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="interest_paid_on_home_loan">Interest Paid on Home Loan (self-occupied) </label>
+                              <input type="number" id="interest_paid_on_home_loan" class="form-control" formControlName="interestPaidOnHomeLoan">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="interest_paid_on_home_loan_let_out">Interest Paid on Home Loan (let-out)</label>
+                              <input type="number" id="interest_paid_on_home_loan_let_out" class="form-control" formControlName="interestPaidOnHomeLoanLetOut">
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="panel-heading">Deductions  </div>
+                    <div class="panel-collapse">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="basic_deductions_80c">Basic Deductions u/s 80C</label>
+                              <input type="number" id="basic_deductions_80c" class="form-control" formControlName="basicDeductions80c">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="interest_on_deposits_in_saving_account_80tta">Interest on deposits in saving account u/s 80TTA </label>
+                              <input type="number" id="interest_on_deposits_in_saving_account_80tta" class="form-control" formControlName="interestOnDepositsInSavingAccount80tta">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="donation_to_charity_80g">Donation to charity u/s 80G </label>
+                              <input type="number" id="donation_to_charity_80g" class="form-control" formControlName="donationToCharity80g">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="medical_insurance_premium_80d">Medical Insurance Premium u/s 80D</label>
+                              <input type="number" id="medical_insurance_premium_80d" class="form-control" formControlName="medicalInsurancePremium80d">
+                          </div>
+                          <div class="col-md-6 col-sm-6 form-group">
+                              <label for="interest_on_educational_loan_80e">Interest on Educational Loan u/s 80E  </label>
+                              <input type="number" id="interest_on_educational_loan_80e" class="form-control" formControlName="interestOnEducationalLoan80e">
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="panel-heading"> HRA Exemption  </div>
+                      <div class="panel-collapse">
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-md-6 col-sm-6 form-group">
+                                <label for="basic_salary_received">Basic salary received</label>
+                                <input type="number" id="basic_salary_received"class="form-control" formControlName="basicSalaryReceived">
+                            </div>
+                            <div class="col-md-6 col-sm-6 form-group">
+                                <label for="dearness_allowance_received">Dearness Allowance (DA) received</label>
+                                <input type="number" id="dearness_allowance_received" class="form-control" formControlName="dearnessAllowanceReceived">
+                            </div>
+                            <div class="col-md-6 col-sm-6 form-group">
+                                <label for="hra_received">HRA received  </label>
+                                <input type="number" id="hra_received" class="form-control" formControlName="hraReceived">
+                            </div>
+                            <div class="col-md-6 col-sm-6 form-group">
+                                <label for="total_rent_paid">Total rent paid</label>
+                                <input type="number" id="total_rent_paid" class="form-control" formControlName="totalRentPaid">
+                            </div>
+                            <div class="col-md-6 col-sm-6 form-group">
+                                <label>Do you live in metro city</label>
+                                <p class="radio-section metro">
+                                    <label><input type="radio" formControlName="metrocity"   value="yes"><span>Yes</span></label>
+                                    <label><input type="radio" formControlName="metrocity"  value="no"><span>No</span></label>
+                                </p>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="text-center">
+                            <button class="btn btn-primary" type="submit" [disabled]="!incomeTaxForm.valid">
+                              Calculate
+                            </button>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              <!-- Here components end here -->
+            </div>
+          </fieldset>
+        </form>
+    
           
-        <div class="col-md-6">
-          <form class="" novalidate (ngSubmit)="calulateIncomeTax()" [formGroup]="incomeTaxForm">
+        <div class="col-md-12">
+            Income Tax Payable {{incometaxpayableInnerHTML}}  <br />
+            Total Income {{totalIncomeMySalary}}  <br />
+            HRA exemption {{hraexemptionInnerHTML}}  <br />
+            Deduction {{deductionsAmount}}  <br />
+            Net Taxable Income {{nettaxableincomeInnerHTML}}  <br />
+            Income Tax Payable {{incometaxpayableInnerHTML}}  <br />
+
+          <!-- <form class="" novalidate (ngSubmit)="calulateIncomeTax()" [formGroup]="incomeTaxForm">
             <fieldset>
               <div class="form-group" [ngClass]="{'has-error': (incomeTaxForm.get('loanAmount').touched || 
               incomeTaxForm.get('loanAmount').dirty) &&
@@ -42,7 +192,7 @@
               </div>
   
             </fieldset>
-          </form>
+          </form> -->
         </div>
   
       </div>

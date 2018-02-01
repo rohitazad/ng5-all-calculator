@@ -25,6 +25,7 @@ import { RecurringDepositComponent } from './ram/calculator/recurring-deposit/re
 
 import { ChartsModule } from 'ng2-charts';
 import { IncomeTaxComponent } from './ram/calculator/income-tax/income-tax.component';
+
 @NgModule({
   declarations: [
     AppComponent,

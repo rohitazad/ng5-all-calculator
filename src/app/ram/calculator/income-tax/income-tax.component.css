@@ -1,0 +1,11 @@
+.tax-accordion .radio-section {
+    padding: 10px 0;
+}
+
+.radio-section label {
+    padding-right: 20px;
+}
+
+.radio-section label span{
+    padding-left:10px;
+}
