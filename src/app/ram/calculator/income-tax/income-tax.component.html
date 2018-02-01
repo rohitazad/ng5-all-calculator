@@ -149,50 +149,49 @@
         </form>
     
           
-        <div class="col-md-12">
-            Income Tax Payable {{incometaxpayableInnerHTML}}  <br />
-            Total Income {{totalIncomeMySalary}}  <br />
-            HRA exemption {{hraexemptionInnerHTML}}  <br />
-            Deduction {{deductionsAmount}}  <br />
-            Net Taxable Income {{nettaxableincomeInnerHTML}}  <br />
-            Income Tax Payable {{incometaxpayableInnerHTML}}  <br />
+        <div class="col-md-12" *ngIf="incometaxpayableInnerHTML">
+                        
 
-          <!-- <form class="" novalidate (ngSubmit)="calulateIncomeTax()" [formGroup]="incomeTaxForm">
-            <fieldset>
-              <div class="form-group" [ngClass]="{'has-error': (incomeTaxForm.get('loanAmount').touched || 
-              incomeTaxForm.get('loanAmount').dirty) &&
-              !incomeTaxForm.get('loanAmount').valid }">
-                <label class="control-label" for="loanAmountId">Loan Amount</label>
-                <div class="input-group">
-                <span class="input-group-addon">₹</span>
-                <input type="number" class="form-control" formControlName="loanAmount" id="loanAmountId" placeholder="Loan Amount (required)"
-                />
-              </div>
-                <span class="help-block" *ngIf="(incomeTaxForm.get('loanAmount').touched || 
-                    incomeTaxForm.get('loanAmount').dirty) && 
-                    incomeTaxForm.get('loanAmount').errors">
-                  <span *ngIf="incomeTaxForm.get('loanAmount').errors.required">Please enter your loan amount.</span>
-                </span>
-              </div>
-  
-  
-              
-  
-             
-  
-  
-  
-  
-              <div class="form-group">
-  
-                <button class="btn btn-primary" type="submit" [disabled]="!incomeTaxForm.valid">
-                  Calculate
+            <div>
+              <div class="alert alert-info col-md-3 text-center">
+                <p>Income Tax Payable</p>
+                <button class="btn btn-success btn-lg">
+                     {{incometaxpayableInnerHTML | currency:'₹ ' }}
                 </button>
-  
               </div>
-  
-            </fieldset>
-          </form> -->
+              <div class="alert alert-info col-md-3 text-center">
+                <p>Total Income</p>
+                <button class="btn btn-warning  btn-lg">
+                     {{totalIncomeMySalary | currency:'₹ ' }}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-3 text-center">
+                <p>HRA exemption</p>
+                <button class="btn btn-info  btn-lg">
+                     {{hraexemptionInnerHTML | currency:'₹ '}}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-3 text-center">
+                <p>Deduction</p>
+                <button class="btn btn-info  btn-lg">
+                     {{deductionsAmount | currency:'₹ '}}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-3 text-center">
+                <p>Net Taxable Income</p>
+                <button class="btn btn-info  btn-lg">
+                     {{nettaxableincomeInnerHTML | currency:'₹ '}}
+                </button>
+              </div>
+              <div class="alert alert-info col-md-3 text-center">
+                <p>Income Tax Payable</p>
+                <button class="btn btn-info  btn-lg">
+                     {{incometaxpayableInnerHTML | currency:'₹ '}}
+                </button>
+              </div>
+          </div>
+
+          
         </div>
   
       </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AccordionModule } from "ngx-accordion";
 
 @Component({
   selector: 'app-income-tax',
@@ -96,13 +95,13 @@ export class IncomeTaxComponent implements OnInit {
 
   //Total Income
   totalIncome() {
-    //Variables to calculate Total Income
-    var gross_salary = this.incomeTaxForm.value.grossSalary;
-    var income_from_interest = this.incomeTaxForm.value.incomeFromInterest;
-    var income_from_other_sources = this.incomeTaxForm.value.incomeFromOtherSources;
-    var income_from_let_out_house_property = this.incomeTaxForm.value.incomeFromLetOutHouseProperty;
-    var interest_paid_on_home_loan_let_out = this.incomeTaxForm.value.interestPaidOnHomeLoanLetOut;
-    var interest_paid_on_home_loan = this.incomeTaxForm.value.interestPaidOnHomeLoan;
+    //let to calculate Total Income
+    let gross_salary = this.incomeTaxForm.value.grossSalary;
+    let income_from_interest = this.incomeTaxForm.value.incomeFromInterest;
+    let income_from_other_sources = this.incomeTaxForm.value.incomeFromOtherSources;
+    let income_from_let_out_house_property = this.incomeTaxForm.value.incomeFromLetOutHouseProperty;
+    let interest_paid_on_home_loan_let_out = this.incomeTaxForm.value.interestPaidOnHomeLoanLetOut;
+    let interest_paid_on_home_loan = this.incomeTaxForm.value.interestPaidOnHomeLoan;
 
     //Based on Assessment year "maximum_deduction_on_interest_paid_on_home_loan" will change
     if (this.assesmentYear == "2018-2019") {
@@ -230,14 +229,15 @@ export class IncomeTaxComponent implements OnInit {
 
   //Comma Separator
   delimitNumbers(str) {
-    var x = str;
-    x = x.toString();
-    var lastThree = x.substring(x.length - 3);
-    var otherNumbers = x.substring(0, x.length - 3);
-    if (otherNumbers != '')
-      lastThree = ',' + lastThree;
-    var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
-    return res;
+    // var x = str;
+    // x = x.toString();
+    // var lastThree = x.substring(x.length - 3);
+    // var otherNumbers = x.substring(0, x.length - 3);
+    // if (otherNumbers != '')
+    //   lastThree = ',' + lastThree;
+    // var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    // return res;
+    return str
   }
   //Net Taxable Income
   totalTaxableIncome() {
