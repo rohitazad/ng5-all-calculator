@@ -25,6 +25,7 @@ import { RecurringDepositComponent } from './ram/calculator/recurring-deposit/re
 
 import { ChartsModule } from 'ng2-charts';
 import { IncomeTaxComponent } from './ram/calculator/income-tax/income-tax.component';
+import { GstComponent } from './ram/calculator/gst/gst.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { IncomeTaxComponent } from './ram/calculator/income-tax/income-tax.compo
     PpfComponent,
     SimpleInterestComponent,
     RecurringDepositComponent,
-    IncomeTaxComponent
+    IncomeTaxComponent,
+    GstComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { IncomeTaxComponent } from './ram/calculator/income-tax/income-tax.compo
       {path:'calculator/simple-interest', component:SimpleInterestComponent},
       {path:'calculator/recurring-deposit', component:RecurringDepositComponent},
       {path:'calculator/calculate-income-tax-on-salary', component:IncomeTaxComponent},
+      {path:'calculator/goods-and-services-tax', component:GstComponent},
       {path:'contact-us', component:ContactComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponentComponent, pathMatch: 'full' },

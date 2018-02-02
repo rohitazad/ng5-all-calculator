@@ -1,0 +1,107 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Goods and services tax (GST) calculator online. 
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div *ngIf="showBlock">
+          <div class="alert alert-info col-md-4 text-center">
+            <p>Original Cost</p>
+            <button class="btn btn-success btn-lg">
+                 {{OriginalCost | currency:'₹ '}}
+            </button>
+          </div>
+          <div class="alert alert-info col-md-4 text-center">
+            <p>GST </p>
+            <button class="btn btn-warning  btn-lg">
+                 {{GST + '%'}}
+            </button>
+          </div>
+          <div class="alert alert-info col-md-4 text-center">
+            <p>GST Price</p>
+            <button class="btn btn-info  btn-lg">
+                 {{GSTPrice | currency:'₹ '}}
+            </button>
+          </div>
+          <div class="alert alert-info col-md-4 text-center">
+            <p>Net Price</p>
+            <button class="btn btn-info  btn-lg">
+                 {{NetPrice | currency:'₹ '}}
+            </button>
+          </div>
+        </div> 
+      </div>
+      <div class="col-md-6">
+        <form class="" novalidate [formGroup]="gstClcForm">
+          <fieldset>
+            <div class="form-group col-md-6" [ngClass]="{'has-error': (gstClcForm.get('initialAmount').touched || 
+            gstClcForm.get('initialAmount').dirty) &&
+            !gstClcForm.get('initialAmount').valid }">
+              <label class="control-label" for="initialAmountId">Amount</label>
+              <div class="input-group">
+              <span class="input-group-addon">₹</span>
+              <input type="number" class="form-control" formControlName="initialAmount" id="initialAmountId" placeholder="Amount (required)"
+              />
+            </div>
+              <span class="help-block" *ngIf="(gstClcForm.get('initialAmount').touched || 
+                  gstClcForm.get('initialAmount').dirty) && 
+                  gstClcForm.get('initialAmount').errors">
+                <span *ngIf="gstClcForm.get('initialAmount').errors.required">Please enter your Amount.</span>
+              </span>
+            </div>
+
+
+            <div class="form-group col-md-6" [ngClass]="{'has-error': (gstClcForm.get('rateOfGst').touched || 
+            gstClcForm.get('rateOfGst').dirty) &&
+            !gstClcForm.get('rateOfGst').valid }">
+              <label class="control-label" for="rateOfGstId">Rate of GST </label>
+              <div class="input-group">
+                 <span class="input-group-addon">%</span>
+              <input type="number"  class="form-control" formControlName="rateOfGst" id="rateOfGstId" placeholder="Rate of GST (required)"
+              />
+            </div>
+              <span class="help-block" *ngIf="(gstClcForm.get('rateOfGst').touched || 
+                  gstClcForm.get('rateOfGst').dirty) && 
+                  gstClcForm.get('rateOfGst').errors">
+                <span *ngIf="gstClcForm.get('rateOfGst').errors.required">Please enter  Rate of GST.</span>
+                <span *ngIf="gstClcForm.get('rateOfGst').errors.max">Please enter  Rate of GST below 28.</span>
+                <span *ngIf="gstClcForm.get('rateOfGst').errors.min">Please enter  Rate of GST above 0.</span>
+              </span>
+            </div>
+
+            
+            <div class="form-group">
+
+              <button class="btn btn-primary" type="button" (click)="addGst()" [disabled]="!gstClcForm.valid">
+                + Add GST 
+              </button>
+              <button class="btn btn-primary" type="button" (click)="subtractGst()" [disabled]="!gstClcForm.valid">
+                -  Subtract GST
+              </button>
+
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formula clearfix"> <h4>Formula:</h4>
+          <span class="formula-sec"><strong>Add GST</strong>
+            GST Amount =  ( Original Cost * GST% ) / 100 
+            Net Price = Original Cost + GST Amount
+            <br />
+            <br />
+            <strong>Subtract GST </strong>
+            GST Amount = Original Cost - ( Original Cost * ( 100 / ( 100 + GST% ) ) )
+            Net Price = Original Cost - GST Amount        </span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

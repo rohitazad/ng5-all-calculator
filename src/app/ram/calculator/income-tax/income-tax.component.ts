@@ -15,6 +15,7 @@ export class IncomeTaxComponent implements OnInit {
   incometaxpayableboldInnerHTML;
   totalIncomeMySalary;
   deductionsAmount;
+  showToResult:boolean = false;
 
   // Constant Values
   STANDARD_DEDUCTION_RATE_ON_INCOME_FROM_LET_OUT_PROPERTY = 30 / 100;
@@ -89,7 +90,7 @@ export class IncomeTaxComponent implements OnInit {
     // ;
     // ;
     // ;
-
+    this.showToResult = true;
 
   }
 
